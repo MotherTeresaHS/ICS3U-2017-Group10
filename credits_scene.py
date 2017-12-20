@@ -1,12 +1,13 @@
 # Created by: James Lee
-# Created on: Dec 2017
+# Created on: Sep 2016
 # Created for: ICS3U
-# This scene shows the main game.
+# This scene shows the credits scene.
 
 from scene import *
 import ui
 
-class GameScene(Scene):
+
+class CreditsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         

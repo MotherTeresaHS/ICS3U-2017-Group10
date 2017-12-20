@@ -6,8 +6,7 @@
 from scene import *
 import ui
 
-
-class MainMenuScene(Scene):
+class GameScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
@@ -47,4 +46,3 @@ class MainMenuScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-    

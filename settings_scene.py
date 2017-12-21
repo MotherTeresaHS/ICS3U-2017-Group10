@@ -1,13 +1,13 @@
 # Created by: James Lee
 # Created on: Dec 2017
 # Created for: ICS3U
-# This scene shows the main game.
+# This scene shows the settings menu.
 
 from scene import *
 import ui
 
 
-class MainMenuScene(Scene):
+class SettingsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
@@ -47,4 +47,3 @@ class MainMenuScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-    

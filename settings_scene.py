@@ -1,10 +1,13 @@
-# Created by: James Lee
+# Created by: David Wang
 # Created on: Dec 2017
 # Created for: ICS3U
-# This scene shows the settings menu.
+# This scene displays the settings scene.
+
 
 from scene import *
 import ui
+
+from main_menu_scene import *
 
 
 class SettingsScene(Scene):

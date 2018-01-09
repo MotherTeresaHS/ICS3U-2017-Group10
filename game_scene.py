@@ -1,16 +1,16 @@
 # Created by: David Wang
 # Created on: Dec 2017
 # Created for: ICS3U
-# This scene displays the credits scene.
-
+# This scene displays the game.
 
 from scene import *
 import ui
 
-from main_menu_scene import *
+from paused_scene import *
+from game_over_scene import *
 
 
-class CreditsScene(Scene):
+class MainGameScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
@@ -50,3 +50,4 @@ class CreditsScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
+    

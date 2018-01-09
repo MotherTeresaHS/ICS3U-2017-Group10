@@ -1,13 +1,12 @@
-# Created by: Mr. Coxall
-# Created on: Sep 2016
+# Created by: James Lee
+# Created on: Dec 2017
 # Created for: ICS3U
-# This scene shows the main menu.
+# This scene shows the main game.
 
 from scene import *
 import ui
 
-
-class MainMenuScene(Scene):
+class GameScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
@@ -47,4 +46,3 @@ class MainMenuScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-    

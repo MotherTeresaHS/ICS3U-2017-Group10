@@ -1,22 +1,19 @@
-# Created by: David Wang
-# Created on: Dec 2017
+# Created by: Mr. Coxall
+# Created on: Sep 2016
 # Created for: ICS3U
-# This scene displays the credits scene.
-
+# This scene shows the main menu.
 
 from scene import *
 import ui
 
-from main_menu_scene import *
 
-
-class CreditsScene(Scene):
+class MainMenuScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
         # add background color
         self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'white', 
+                                     color = 'blue', 
                                      parent = self, 
                                      size = self.size)
     
@@ -50,3 +47,4 @@ class CreditsScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
+    

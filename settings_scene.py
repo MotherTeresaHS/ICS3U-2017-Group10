@@ -3,10 +3,12 @@
 # Created for: ICS3U
 # This scene displays the settings scene.
 
+
 from scene import *
 import ui
 
 from main_menu_scene import *
+
 
 class SettingsScene(Scene):
     def setup(self):
@@ -48,4 +50,3 @@ class SettingsScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-    

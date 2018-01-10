@@ -1,21 +1,40 @@
-# Created by: James Lee
-# Created on: Dec 2017
+# Created by: David, James
+# Created on: Sep 2016
 # Created for: ICS3U
-# This scene shows the main game.
+# This scene displays the main menu.
 
 from scene import *
 import ui
 
-class GameScene(Scene):
+from instructions_scene import *
+from credits_scene import *
+from settings_scene import *
+
+class MainMenuScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
+        self.score_position = Vector2()
+        self.size_of_screen_x = self.size.x
+        self.size_of_screen_y = self.size.y
+        self.centre_of_screen_x = self.size_of_screen_x/2
+        self.centre_of_screen_y = self.size_of_screen_y/2 
+        self.scale_size = 0.4
+        
         # add background color
-        self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'white', 
+        self.background = SpriteNode('./assets/sprites/main_menu_background.PNG',
+                                     position = self.size / 2, 
                                      parent = self, 
                                      size = self.size)
-    
+                                     
+        
+         # sound
+        #if SettingsScene.MusicOn == True:
+           #SettingsScene.MainMenuMusic.play()
+        #elif SettingsScene.MusicOn == False:
+           #SettingsScene.MainMenuMusic.pause()
+        
+
     def update(self):
         # this method is called, hopefully, 60 times a second
         pass
@@ -46,3 +65,12 @@ class GameScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
+    
+    def rotate(self, orientation):
+        allowed_orientations = ['LANDSCAPE']
+        if orientation.upper() in allowed_orientations:
+            self.execute(Command.SET_SCREEN_ORIENTATION, {'orientation': orientation})
+        else:
+            raise WebDriverException("You can only set the orientation to 'LANDSCAPE' or 'PORTRAIT'.")
+
+

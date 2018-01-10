@@ -1,19 +1,22 @@
-# Created by: Mr. Coxall
-# Created on: Sep 2016
+# Created by: David Wang
+# Created on: Dec 2017
 # Created for: ICS3U
-# This scene shows the main menu.
+# This scene displays the game.
 
 from scene import *
 import ui
 
+from paused_scene import *
+from game_over_scene import *
 
-class MainMenuScene(Scene):
+
+class MainGameScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
         # add background color
         self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'blue', 
+                                     color = 'white', 
                                      parent = self, 
                                      size = self.size)
     

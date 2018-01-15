@@ -1,27 +1,41 @@
-# Created by: David Wang
+# Created by: James Lee
 # Created on: Dec 2017
 # Created for: ICS3U
 # This scene displays the credits scene.
 
-
 from scene import *
 import ui
+import time
 
 from main_menu_scene import *
-
 
 class CreditsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
-        
+        self.start_time = time.time()
+
         # add background color
         self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'white', 
+                                     color = 'blue', 
                                      parent = self, 
                                      size = self.size)
-    
+                                     
+        self.center_of_screen = self.size/2
+        self.label_position = Vector2()
+        self.label_position.x = self.center_of_screen.x * 1.4
+        self.label_position.y = self.center_of_screen.y/6
+
+        self.label = LabelNode(text = 'Design by: James Lee',
+                                      font=('Party LET', 40),
+                                      parent = self,
+                                      position = self.label_position)
+                                      
     def update(self):
         # this method is called, hopefully, 60 times a second
+        update_position = Action.move_by(0, 30)
+        if not self.presented_scene and time.time() - self.start_time > 1:
+             self.label.run_action(update_position)
+
         pass
     
     def touch_began(self, touch):

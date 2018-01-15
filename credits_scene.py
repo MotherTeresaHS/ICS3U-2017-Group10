@@ -1,7 +1,7 @@
 # Created by: David Wang
 # Created on: Dec 2017
 # Created for: ICS3U
-# This scene displays the settings scene.
+# This scene displays the credits scene.
 
 
 from scene import *
@@ -10,7 +10,7 @@ import ui
 from main_menu_scene import *
 
 
-class SettingsScene(Scene):
+class CreditsScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         

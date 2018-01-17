@@ -7,7 +7,7 @@ from scene import *
 import ui
 import time
 
-from main_menu_scene import *
+from main_menu_scene import * 
 
 class CreditsScene(Scene):
     def setup(self):
@@ -15,18 +15,24 @@ class CreditsScene(Scene):
         self.start_time = time.time()
 
         # add background color
-        self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'blue', 
+        self.background = SpriteNode('./assets/sprites/star_background.png',
+                                     position = self.size / 2, 
                                      parent = self, 
                                      size = self.size)
                                      
         self.center_of_screen = self.size/2
+        
         self.design_credit_position = Vector2()
         self.design_credit_position.x = self.center_of_screen.x * 1.4
-        self.design_credit_position.y = self.center_of_screen.y/6
+        self.design_credit_position.y = self.center_of_screen.y - 500
+        
         self.game_credit_position = Vector2()
         self.game_credit_position.x = self.center_of_screen.x * 1.4
-        self.game_credit_position.y = self.center_of_screen.y/20 
+        self.game_credit_position.y = self.center_of_screen.y - 600
+       
+        self.home_button_position = Vector2()
+        self.home_button_position.x = self.center_of_screen.x / 4.2
+        self.home_button_position.y = self.center_of_screen.y * 1.7
 
         self.design_credit = LabelNode(text = 'Design by: James Lee',
                                       font=('Party LET', 40),
@@ -34,10 +40,14 @@ class CreditsScene(Scene):
                                       position = self.design_credit_position)
                                       
 
-        self.game_credit = LabelNode(text = 'Design by: David Wang',
+        self.game_credit = LabelNode(text = 'Game by: David Wang',
                                       font=('Party LET', 40),
                                       parent = self,
                                       position = self.game_credit_position)
+
+        self.home_button = SpriteNode('./assets/sprites/back_button.png',
+                                       parent = self,
+                                       position = self.home_button_position)
                                       
     def update(self):
         # this method is called, hopefully, 60 times a second
@@ -49,6 +59,7 @@ class CreditsScene(Scene):
     
     def touch_began(self, touch):
         # this method is called, when user touches the screen
+        
         pass
     
     def touch_moved(self, touch):
@@ -57,8 +68,10 @@ class CreditsScene(Scene):
     
     def touch_ended(self, touch):
         # this method is called, when user releases a finger from the screen
-        pass
-    
+        if self.home_button.frame.contains_point(touch.location):
+            self.present_modal_scene(MainMenuScene())
+            print('Hi')
+
     def did_change_size(self):
         # this method is called, when user changes the orientation of the screen
         # thus changing the size of each dimension

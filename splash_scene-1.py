@@ -1,5 +1,5 @@
-# Created by: Mr. Coxall
-# Created on: Nov 2017
+# Created by: David, James
+# Created on: Dec 2017
 # Created for: ICS3U
 # This scene shows a splash screen for 2 seconds,
 #   then transitions to the main menu.
@@ -18,11 +18,7 @@ class SplashScene(Scene):
         # create timer, so that after 2 seconds move to next scene
         self.start_time = time.time()
         
-        # add MT blue background color
-        self.background = SpriteNode(position = self.size / 2, 
-                                     color = (0.61, 0.78, 0.87), 
-                                     parent = self, 
-                                     size = self.size)
+        # shows MT game studio logo
         self.school_crest = SpriteNode('./assets/sprites/MT_Game_Studio.png',
                                        parent = self,
                                        position = self.size/2,

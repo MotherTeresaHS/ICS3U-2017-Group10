@@ -1,4 +1,4 @@
-# Created by: David Wang
+# Created by: David, James
 # Created on: Dec 2017
 # Created for: ICS3U
 # This scene sisplays the game over scene.

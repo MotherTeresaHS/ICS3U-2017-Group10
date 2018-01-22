@@ -5,7 +5,7 @@
 
 from scene import *
 import ui
-import config
+#import config
 from main_menu_scene import *
 
 class SettingsScene(Scene):

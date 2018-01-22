@@ -1,22 +1,69 @@
-# Created by: Mr. Coxall
-# Created on: Sep 2016
+# Created by: David, James
+# Created on: Dec 2017
 # Created for: ICS3U
-# This scene shows the main menu.
+# This scene displays the main menu.
 
 from scene import *
 import ui
+import sound
 
+from instructions_scene import *
+from credits_scene import *
+from settings_scene import *
 
 class MainMenuScene(Scene):
     def setup(self):
         # this method is called, when user moves to this scene
         
+        self.score_position = Vector2()
+        self.size_of_screen_x = self.size.x
+        self.size_of_screen_y = self.size.y
+        self.centre_of_screen_x = self.size_of_screen_x/2
+        self.centre_of_screen_y = self.size_of_screen_y/2 
+        self.scale_size = 0.4
+        
         # add background color
-        self.background = SpriteNode(position = self.size / 2, 
-                                     color = 'blue', 
+        self.background = SpriteNode('./assets/sprites/main_menu_background.PNG',
+                                     position = self.size / 2, 
                                      parent = self, 
                                      size = self.size)
-    
+                                     
+        
+        # add start button
+        start_button_position = Vector2()
+        start_button_position.x = self.centre_of_screen_x + 220
+        start_button_position.y = self.centre_of_screen_y
+        self.start_button = SpriteNode('./assets/sprites/play_button.PNG',
+                                       parent = self,
+                                       position = start_button_position,
+                                       scale = 1.60)  
+                                       
+        
+        # add settings button
+        settings_button_position = Vector2()
+        settings_button_position.x = self.centre_of_screen_x + 220
+        settings_button_position.y = self.centre_of_screen_y - 100
+        self.settings_button = SpriteNode('./assets/sprites/settings_button.PNG',
+                                       parent = self,
+                                       position = settings_button_position,
+                                       scale = 1.5)
+        
+        # add credits button
+        credits_button_position = Vector2()
+        credits_button_position.x = self.centre_of_screen_x + 220
+        credits_button_position.y = self.centre_of_screen_y - 200
+        self.credits_button = SpriteNode('./assets/sprites/credits_button.PNG',
+                                       parent = self,
+                                       position = credits_button_position,
+                                       scale = 1.5)
+        
+         # sound
+        #if SettingsScene.MusicOn == True:
+           #SettingsScene.MainMenuMusic.play()
+        #elif SettingsScene.MusicOn == False:
+           #SettingsScene.MainMenuMusic.pause()
+        
+
     def update(self):
         # this method is called, hopefully, 60 times a second
         pass
@@ -31,8 +78,24 @@ class MainMenuScene(Scene):
     
     def touch_ended(self, touch):
         # this method is called, when user releases a finger from the screen
-        pass
+        
+        # transitions to instructions scene when start button is touched
+        if self.start_button.frame.contains_point(touch.location):
+           sound.play_effect('8ve:8ve-tap-mellow')
+           self.present_modal_scene(InstructionsScene())
+        
+        # transitions to settings scene when the settings button is touched
+        if self.settings_button.frame.contains_point(touch.location):
+           sound.play_effect('8ve:8ve-tap-mellow')
+           self.present_modal_scene(SettingsScene())
+        
+        # tranitions to credits scene when the credits button is touched
+        if self.credits_button.frame.contains_point(touch.location):
+            sound.play_effect('8ve:8ve-tap-mellow')
+            self.present_modal_scene(CreditsScene())
+        
     
+
     def did_change_size(self):
         # this method is called, when user changes the orientation of the screen
         # thus changing the size of each dimension
@@ -47,4 +110,4 @@ class MainMenuScene(Scene):
         # this method is called, when user place app from background 
         # back into use. Reload anything you might need.
         pass
-    
+

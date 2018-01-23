@@ -24,6 +24,8 @@ class GameScene(Scene):
         self.left_button_down = False
         self.right_button_down = False
         self.fire_button_down = False
+        self.fire_button_enabled = True
+        self.note_fired_time = time.time()
         self.speed_of_violin = 15.0
         self.notes = []
         self.violists = []
@@ -113,7 +115,7 @@ class GameScene(Scene):
             self.violin.run_action(Action.move_by(self.speed_of_violin, 0.0, 0.1))
         
         # creates violist at random intervals
-        violist_create_chance = random.randint(1, 80)
+        violist_create_chance = (random.randint(1,150) - config.score / 10)
         if violist_create_chance <= self.violists_attack_rate and self.game_over == False:
             self.create_violist()
         
@@ -138,7 +140,7 @@ class GameScene(Scene):
         if not self.score_label.text == 'Score: ' + str(config.score) and self.game_over == False:
             self.score_label.text = 'Score: ' + str(config.score)
         
-        # removes guen and violist and sets game over to true
+        # removes guen and violist when they collide
         for violist_shred in self.violists:
             if violist_shred.frame.intersects(self.violin.frame):
                 self.violin.position = Vector2(-300, -500)
@@ -147,6 +149,10 @@ class GameScene(Scene):
                 self.violists.remove(violist_shred)
                 self.present_modal_scene(GameOverScene())
                 time.sleep(0.1)
+        
+        # sets fire button to true if one second has passed
+        if (time.time() - self.note_fired_time) > 1:
+            self.fire_button_enabled = True
     
     def touch_began(self, touch):
         # this method is called, when user touches the screen
@@ -184,7 +190,9 @@ class GameScene(Scene):
         self.fire_button.alpha = 2
         
         # fires a note when fire button is touched
-        if self.fire_button.frame.contains_point(touch.location) and self.game_over == False:
+        if self.fire_button.frame.contains_point(touch.location) and self.fire_button_enabled and self.game_over == False:
+            self.note_fired_time = time.time()
+            self.fire_button_enabled = False
             self.create_new_note()
     
     def did_change_size(self):
@@ -228,7 +236,7 @@ class GameScene(Scene):
         self.violists.append(SpriteNode('./assets/sprites/violist.PNG',
                                         parent = self,
                                         position = violist_start_position,
-                                        scale = 0.80))
+                                        scale = 0.20))
         
         violist_move_action = Action.move_to(violist_end_position.x - random.randint(1000, 2000),
                                              violist_end_position.y,

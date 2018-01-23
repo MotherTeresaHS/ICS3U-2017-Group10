@@ -10,6 +10,7 @@ import time
 
 from numpy import random
 from game_over_scene import *
+from game_won_scene import *
 
 
 class GameScene(Scene):
@@ -92,6 +93,9 @@ class GameScene(Scene):
         
         if config.game_over == True:
             self.dismiss_modal_scene()
+        
+        if config.score == 25:
+            self.present_modal_scene(GameWonScene())
         
         # sets scale and alpha lowe for each button when buttons are held down
         if self.left_button_down == True:

@@ -8,12 +8,11 @@ import ui
 import config
 
 from main_menu_scene import *
-
+import time
 
 class InstructionsScene(Scene):
     def setup(self):
-        # this method is called, when user moves to this scene
-        
+
         self.size_of_screen_x = self.size.x
         self.size_of_screen_y = self.size.y
         self.centre_of_screen_x = self.size_of_screen_x/2
@@ -197,9 +196,9 @@ class InstructionsScene(Scene):
         pass
     
     def touch_ended(self, touch):
-        # this method is called, when user releases a finger from the screen
         
         # sets button down to false when button is released
+
         self.left_button_down = False
         self.right_button_down = False
         self.fire_button_down = False

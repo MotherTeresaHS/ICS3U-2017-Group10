@@ -102,8 +102,6 @@ class SettingsScene(Scene):
     
     def touch_ended(self, touch):
         # this method is called, when user releases a finger from the screen
-        
-        # dismisses settings scene if home button is touched
         if self.home_button.frame.contains_point(touch.location):
             if config.mute == False:
                 sound.play_effect('8ve:8ve-beep-organ')
@@ -114,7 +112,6 @@ class SettingsScene(Scene):
         
         if self.mute_button.frame.contains_point(touch.location):
             config.mute = True
-    
     
     def did_change_size(self):
         # this method is called, when user changes the orientation of the screen
